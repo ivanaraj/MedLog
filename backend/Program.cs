@@ -26,6 +26,11 @@ builder.Services.AddSingleton<IMongoClient>(sp =>
 // UserService
 builder.Services.AddSingleton<UserService>();
 
+// SpecializationService
+builder.Services.AddSingleton<SpecializationService>();
+
+// ExaminationService
+builder.Services.AddSingleton<ExaminationService>();
 
 var app = builder.Build();
 

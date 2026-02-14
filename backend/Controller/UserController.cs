@@ -21,6 +21,11 @@ public class UserController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create(User user)
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+        
         await _service.CreateAsync(user);
         return Ok(user);
     }
