@@ -27,7 +27,7 @@ public class User
 
     [StringLength(13, MinimumLength = 13)]
     [RegularExpression(@"^\d{13}$", ErrorMessage = "JMBG must have exactly 13 digits.")]
-    public string Jmbg { get; set; } = null!; // for patients
+    public string Jmbg { get; set; } = null; // for patients
     
     //specijalizacija za doktore
     
