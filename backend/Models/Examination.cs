@@ -9,7 +9,11 @@ public class Examination
     public string? Id { get; set; }
 
     public DateTime Date { get; set; }
+
+    [BsonRepresentation(BsonType.ObjectId)]
     public string PatientId { get; set; } = null!;
+    
+    [BsonRepresentation(BsonType.ObjectId)]
     public string DoctorId { get; set; } = null!;
     public string SpecializationId { get; set; } = null!;
     public string Diagnosis { get; set; } = null!;
