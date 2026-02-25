@@ -32,9 +32,6 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("register")]
-    // KORAK ZA ZAKLJUČAVANJE: 
-    // Trenutno je zakomentarisano da bi napravila prvog admina. 
-    // Čim napraviš prvog admina kroz Swagger, otkomentariši liniju ispod!
     [Authorize(Roles = "Admin")] 
     public async Task<IActionResult> Register([FromBody] User user)
     {

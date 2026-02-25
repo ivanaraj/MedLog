@@ -42,7 +42,6 @@ public class ExaminationController : ControllerBase
     }
 
     [HttpGet("patient/{patientId}/history")]
-    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetPatientHistory(
     string patientId,
     [FromQuery] int page = 1,
