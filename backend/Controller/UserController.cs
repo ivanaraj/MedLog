@@ -1,7 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
+
 public class UserController : ControllerBase
 {
     private readonly UserService _service;
@@ -18,18 +21,6 @@ public class UserController : ControllerBase
         return Ok(users);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Create(User user)
-    {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-        
-        await _service.CreateAsync(user);
-        return Ok(user);
-    }
-
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(string id)
     {
@@ -37,33 +28,43 @@ public class UserController : ControllerBase
         return Ok(user);
     }
 
-    [HttpGet("patient/{patientId}/history")]
-        public async Task<ActionResult<List<Examination>>> GetPatientHistory(string patientId)
-        {
-            if (string.IsNullOrWhiteSpace(patientId))
-            {
-                return BadRequest("ID pacijenta ne sme biti prazan.");
-            }
-            var history = await _service.GetPatientHistoryAsync(patientId);
-            if (history == null || history.Count == 0)
-            {
-                return Ok(new List<Examination>()); 
-            }
-            return Ok(history);
-        }
 
-[HttpGet("doctor/{doctorId}/specializations")]
-    public async Task<ActionResult<List<string>>> GetDoctorSpecializationIds(string doctorId)
+    [HttpGet("doctor/{doctorId}/specialization")]
+    public async Task<ActionResult<List<string>>> GetDoctorSpecializationId(string doctorId)
     {
         if (string.IsNullOrWhiteSpace(doctorId))
         {
-            return BadRequest("ID doktora ne sme biti prazan.");
+            return BadRequest("Doctor ID must not be empty.");
         }
-        var specializationIds = await _service.GetDoctorSpecializationIdsAsync(doctorId);
-        if (specializationIds == null)
+        var specializationId = await _service.GetDoctorSpecializationIdAsync(doctorId);
+        if (specializationId == "")
         {
-            return NotFound("Doktor sa prosleđenim ID-jem nije pronađen ili korisnik nije doktor.");
+            return NotFound("Doctor not found or user is not a doctor.");
         }
-        return Ok(specializationIds);
+        return Ok(specializationId);
+    }
+
+    [HttpGet("patients")]
+    [Authorize(Roles = "Doctor,Admin")] 
+    public async Task<IActionResult> GetPatients(
+    [FromQuery] int page = 1,
+    [FromQuery] int pageSize = 10,
+    [FromQuery] string? searchTerm = null)
+    {
+        if (pageSize > 100) pageSize = 100;
+        if (page < 1) page = 1;
+
+        var result = await _service.GetPatientsAsync(page, pageSize, searchTerm);
+
+        var response = new
+        {
+            Items = result.Patients,
+            TotalCount = result.TotalCount,
+            Page = page,
+            PageSize = pageSize,
+            TotalPages = (int)Math.Ceiling(result.TotalCount / (double)pageSize)
+        };
+
+        return Ok(response);
     }
 }
