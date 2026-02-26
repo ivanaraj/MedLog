@@ -1,0 +1,121 @@
+.spec-page .page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.spec-page .page-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-darkest);
+  margin-bottom: 4px;
+}
+
+.spec-page .page-header p {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+}
+
+.spec-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-text-light);
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.spec-empty p {
+  margin-top: 12px;
+  font-size: 0.875rem;
+}
+
+/* Grid */
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 16px;
+}
+
+.spec-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 20px 24px;
+  border-top: 3px solid var(--color-medium);
+}
+
+.spec-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.spec-card-header h3 {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--color-darkest);
+}
+
+.spec-card-id {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  margin-bottom: 16px;
+  font-family: 'Courier New', monospace;
+}
+
+.spec-params {
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+}
+
+.spec-params-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-light);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.spec-params-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.param-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: var(--color-lightest);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  color: var(--color-dark);
+  font-weight: 500;
+}
+
+.param-chip small {
+  color: var(--color-text-light);
+  font-weight: 400;
+}
+
+.param-type {
+  padding-left: 4px;
+  border-left: 1px solid var(--color-border);
+  margin-left: 2px;
+}
+
+.spec-no-params {
+  font-size: 0.8125rem;
+  color: var(--color-text-light);
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+}

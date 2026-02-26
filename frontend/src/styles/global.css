@@ -1,0 +1,77 @@
+:root {
+  --color-lightest: #D6F3F4;
+  --color-light: #74B3CE;
+  --color-medium: #508991;
+  --color-dark: #004346;
+  --color-darkest: #172A3A;
+
+  --color-white: #ffffff;
+  --color-bg: #f4f8f9;
+  --color-error: #dc3545;
+  --color-success: #28a745;
+  --color-border: #e0e6e8;
+  --color-text: #172A3A;
+  --color-text-light: #6b7c8a;
+
+  --radius: 8px;
+  --radius-lg: 12px;
+  --shadow-sm: 0 1px 3px rgba(23, 42, 58, 0.08);
+  --shadow-md: 0 4px 12px rgba(23, 42, 58, 0.1);
+  --shadow-lg: 0 8px 24px rgba(23, 42, 58, 0.12);
+
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input, select, textarea {
+  font-family: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-light);
+  border-radius: 3px;
+}
+
+/* Utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

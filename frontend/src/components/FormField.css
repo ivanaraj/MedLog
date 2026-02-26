@@ -1,0 +1,40 @@
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-darkest);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  color: var(--color-text);
+  background: var(--color-white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--color-light);
+  box-shadow: 0 0 0 3px rgba(116, 179, 206, 0.15);
+}
+
+.form-field input::placeholder {
+  color: var(--color-text-light);
+}
+
+.form-error {
+  font-size: 0.75rem;
+  color: var(--color-error);
+}

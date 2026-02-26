@@ -1,0 +1,68 @@
+.create-exam-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.create-exam-form .form-alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius);
+  color: var(--color-error);
+  font-size: 0.8125rem;
+}
+
+.spec-badge {
+  padding: 10px 14px;
+  background: var(--color-lightest);
+  border-radius: var(--radius);
+  font-size: 0.8125rem;
+  color: var(--color-dark);
+}
+
+.create-exam-form textarea {
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  color: var(--color-text);
+  background: var(--color-white);
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.create-exam-form textarea:focus {
+  border-color: var(--color-light);
+  box-shadow: 0 0 0 3px rgba(116, 179, 206, 0.15);
+}
+
+.exam-params h4 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-darkest);
+  margin-bottom: 12px;
+}
+
+.params-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+@media (max-width: 500px) {
+  .params-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -211,3 +211,35 @@ FakesAssemblies/
 
 #env
 .env
+
+node_modules/
+# Frontend dependencies
+dist/
+build/
+.next/
+out/
+.nuxt/
+.cache/
+.vuepress/dist/
+
+# Package manager lock files (optional - uncomment if you prefer not to commit them)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.idea/
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Build outputs
+dist/
+build/

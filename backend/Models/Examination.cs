@@ -8,15 +8,15 @@ public class Examination
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
 
-    public DateTime Date { get; set; }
+    public required DateTime Date { get; set; }
 
     [BsonRepresentation(BsonType.ObjectId)]
-    public string PatientId { get; set; } = null!;
+    public required string PatientId { get; set; }
     
     [BsonRepresentation(BsonType.ObjectId)]
-    public string DoctorId { get; set; } = null!;
-    public string SpecializationId { get; set; } = null!;
-    public string Diagnosis { get; set; } = null!;
+    public required string DoctorId { get; set; }
+    public required string SpecializationId { get; set; }
+    public required string Diagnosis { get; set; }
     public Dictionary<string, object> Data{ get; set; } = new();
 
 }

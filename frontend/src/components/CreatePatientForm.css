@@ -1,0 +1,36 @@
+.create-patient-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.create-patient-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius);
+  color: var(--color-error);
+  font-size: 0.8125rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+@media (max-width: 500px) {
+  .create-patient-form .form-row {
+    grid-template-columns: 1fr;
+  }
+}

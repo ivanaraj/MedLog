@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize(Roles = "Doctor")]
 
 public class ExaminationController : ControllerBase
 {
@@ -26,7 +28,7 @@ public class ExaminationController : ControllerBase
         {
             return BadRequest(ModelState);
         }
-        
+
         await _service.CreateAsync(examination);
         return Ok(examination);
     }
@@ -38,4 +40,34 @@ public class ExaminationController : ControllerBase
         await _service.DeleteAsync(id);
         return NoContent();
     }
+
+    [HttpGet("patient/{patientId}/history")]
+    public async Task<IActionResult> GetPatientHistory(
+    string patientId,
+    [FromQuery] int page = 1,
+    [FromQuery] int pageSize = 10)
+    {
+        if (string.IsNullOrWhiteSpace(patientId))
+        {
+            return BadRequest("ID pacijenta ne sme biti prazan.");
+        }
+
+        if (pageSize > 50) pageSize = 50;
+        if (page < 1) page = 1;
+
+        var result = await _service.GetPatientHistoryAsync(patientId, page, pageSize);
+
+        var response = new
+        {
+            Items = result.Examinations,
+            TotalCount = result.TotalCount,
+            Page = page,
+            PageSize = pageSize,
+            TotalPages = (int)Math.Ceiling(result.TotalCount / (double)pageSize)
+        };
+
+        return Ok(response);
+    }
+
+
 }
