@@ -14,6 +14,10 @@ public class SpecializationService
     public async Task<List<Specialization>> GetAsync() =>
         await _specializations.Find(_ => true).ToListAsync();
     
+    public async Task<Specialization> GetByIdAsync(string id) =>
+        await _specializations.Find(s => s.Id == id).FirstOrDefaultAsync();
+
+
     public async Task CreateAsync(Specialization specialization) 
     {
         var spec = await _specializations.Find(s => s.Id == specialization.Id).FirstOrDefaultAsync();
@@ -22,9 +26,10 @@ public class SpecializationService
             throw new ArgumentException("Specialization with this ID already exists.");
         }
         await _specializations.InsertOneAsync(specialization);
-
     }
 
     public async Task DeleteAsync(string id) =>
         await _specializations.DeleteOneAsync(s => s.Id == id);
+
+    
 }

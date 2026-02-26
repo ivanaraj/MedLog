@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize(Roles = "Admin")] 
 
 public class SpecializationController : ControllerBase
 {
@@ -18,6 +20,15 @@ public class SpecializationController : ControllerBase
         var specializations = await _service.GetAsync();
         return Ok(specializations);
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(string id)
+    {
+        var spec = await _service.GetByIdAsync(id);
+        if (spec == null) return NotFound();
+        return Ok(spec);
+    }
+
 
     [HttpPost]
     public async Task<IActionResult> Create(Specialization specialization)
