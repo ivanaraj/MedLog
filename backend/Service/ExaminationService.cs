@@ -44,7 +44,7 @@ public class ExaminationService
             JsonValueKind.Number => element.TryGetInt32(out var i) ? i : element.GetDouble(),
             JsonValueKind.True => true,
             JsonValueKind.False => false,
-            _ => element.ToString()! // Za objekte i nizove, jednostavno ih čuvamo kao string
+            _ => element.ToString()! 
         };
     }
 
