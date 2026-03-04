@@ -100,3 +100,4 @@ docker-compose down -v
 - MongoDB je osnovna baza podataka
 - Frontend je uokviren sa React Context API-jem za stanje
 
+Kada se pokrene aplikacija, potrebno je da se preko swagger-a kreira admin, koji ce da se uloguje i zatim doda specijalizacije i doktore.
